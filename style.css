@@ -1,0 +1,1054 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #1f1a14;
+  --bg-rose: #1a0a14;
+  --petal-yellow: #F7C948;
+  --petal-orange: #E8A230;
+  --petal-dark: #D4881C;
+  --petal-tip: #CC7722;
+  --center-light: #5D4930;
+  --center-dark: #3D2E1F;
+  --center-dots: #2A1F15;
+  --stem-light: #6B8E23;
+  --stem-main: #4A7023;
+  --stem-dark: #3D5C1A;
+  --leaf-light: #7CB342;
+  --leaf-main: #5D9930;
+  --leaf-dark: #4A7A25;
+  --rose-red: #DC143C;
+  --rose-pink: #FF69B4;
+  --rose-deep: #8B0000;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.rose-scene {
+  background: linear-gradient(180deg, #1a0a14 0%, #2d1020 50%, #1a0a14 100%);
+}
+
+/* Glows */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glow-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(247, 201, 72, 0.08);
+  top: 10%;
+  left: -100px;
+}
+
+.glow-2 {
+  width: 350px;
+  height: 350px;
+  background: rgba(247, 201, 72, 0.06);
+  top: 15%;
+  right: -120px;
+}
+
+.glow-3 {
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 182, 193, 0.1);
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rose-glow {
+  background: rgba(255, 105, 180, 0.15) !important;
+}
+
+/* Sparkle burst effect */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  z-index: 150;
+}
+
+.sparkle::before,
+.sparkle::after {
+  content: '';
+  position: absolute;
+  background: #FFD700;
+  border-radius: 2px;
+}
+
+.sparkle::before {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.sparkle::after {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+/* Heart particles */
+.heart-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 150;
+  opacity: 0;
+}
+
+.heart-particle::before,
+.heart-particle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #FF6B9D;
+  border-radius: 50% 50% 0 50%;
+  transform: rotate(-45deg);
+}
+
+.heart-particle::after {
+  left: 50%;
+  transform: rotate(45deg);
+}
+
+/* Floating hearts background */
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0;
+  animation: floatUp 8s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(0deg);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+/* Hearts explosion for rose scene */
+.hearts-explosion {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.explosion-heart {
+  position: absolute;
+  font-size: 30px;
+  opacity: 0;
+}
+
+/* Messages */
+.message-container {
+  position: absolute;
+  top: 4%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 50;
+  padding: 0 15px;
+}
+
+.message {
+  opacity: 0;
+  color: #fff;
+  text-shadow: 
+    0 0 30px rgba(247, 201, 72, 0.5),
+    0 0 60px rgba(247, 201, 72, 0.3);
+  font-weight: 400;
+}
+
+.message-1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  color: #FFFBEB;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.message-2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: var(--petal-yellow);
+  margin-bottom: 10px;
+}
+
+.message-3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #FFE066;
+  margin-top: 5px;
+  letter-spacing: 3px;
+}
+
+.message-4 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: #FFB6C1;
+  margin-top: 15px;
+}
+
+.love-message {
+  text-shadow: 
+    0 0 30px rgba(255, 105, 180, 0.6),
+    0 0 60px rgba(255, 105, 180, 0.4);
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.or-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: #FFE066;
+  font-style: italic;
+}
+
+/* Yes Buttons */
+.yes-btn {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  padding: 12px 35px;
+  background: linear-gradient(145deg, #FFD700, #FFA500, #FF6B6B);
+  background-size: 200% 200%;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(255, 215, 0, 0.4),
+    0 0 30px rgba(255, 107, 107, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: gradientShift 3s ease infinite, buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes buttonPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 
+      0 4px 15px rgba(255, 215, 0, 0.4),
+      0 0 30px rgba(255, 107, 107, 0.3);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 
+      0 6px 25px rgba(255, 215, 0, 0.6),
+      0 0 50px rgba(255, 107, 107, 0.5);
+  }
+}
+
+.yes-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.yes-btn:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 
+    0 8px 30px rgba(255, 215, 0, 0.7),
+    0 0 60px rgba(255, 107, 107, 0.6),
+    0 0 80px rgba(255, 182, 193, 0.4);
+}
+
+.yes-btn:active {
+  transform: scale(0.95) !important;
+}
+
+/* Sparkles around buttons */
+.yes-btn::after {
+  content: '✨';
+  position: absolute;
+  font-size: 14px;
+  top: -10px;
+  right: -10px;
+  animation: sparkleFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-5px) rotate(180deg); opacity: 0.5; }
+}
+
+/* Garden */
+.garden {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 85%;
+}
+
+/* Sunflower */
+.sunflower {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Stem */
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, 
+    var(--stem-dark) 0%, 
+    var(--stem-main) 30%, 
+    var(--stem-light) 50%, 
+    var(--stem-main) 70%, 
+    var(--stem-dark) 100%
+  );
+  border-radius: 4px;
+  transform-origin: bottom center;
+}
+
+/* Flower head container */
+.flower-head {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center center;
+}
+
+/* Individual petals */
+.petal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(to bottom,
+    var(--petal-yellow) 0%,
+    var(--petal-orange) 50%,
+    var(--petal-dark) 80%,
+    var(--petal-tip) 100%
+  );
+  box-shadow: 
+    inset 1px 0 2px rgba(255,255,255,0.3),
+    inset -1px 0 2px rgba(0,0,0,0.15);
+}
+
+.petal::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 55%;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(204, 119, 34, 0.4) 50%, 
+    transparent 100%
+  );
+}
+
+.petal-inner {
+  background: linear-gradient(to bottom,
+    #FFE066 0%,
+    var(--petal-yellow) 40%,
+    var(--petal-orange) 80%,
+    var(--petal-dark) 100%
+  );
+  z-index: 2;
+}
+
+/* Center */
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    var(--center-light) 0%,
+    var(--center-dark) 70%,
+    var(--center-dots) 100%
+  );
+  box-shadow: 
+    inset -4px -4px 10px rgba(0,0,0,0.4),
+    inset 2px 2px 6px rgba(93, 73, 48, 0.4),
+    0 2px 4px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.center::before {
+  content: '';
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    repeating-radial-gradient(
+      circle at center,
+      transparent 0px,
+      transparent 2px,
+      rgba(42, 31, 21, 0.6) 2px,
+      rgba(42, 31, 21, 0.6) 3px,
+      transparent 3px,
+      transparent 5px
+    );
+}
+
+/* Leaf - connects from bottom to stem */
+.leaf {
+  position: absolute;
+  background: linear-gradient(135deg,
+    var(--leaf-light) 0%,
+    var(--leaf-main) 50%,
+    var(--leaf-dark) 100%
+  );
+  box-shadow:
+    inset 2px 2px 8px rgba(124, 179, 66, 0.6),
+    inset -2px -3px 6px rgba(0,0,0,0.2),
+    2px 3px 6px rgba(0,0,0,0.25);
+  border-radius: 50% 50% 10% 10%;
+}
+
+.leaf::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 65%;
+  background: linear-gradient(to top,
+    rgba(74, 122, 37, 0.8) 0%,
+    rgba(74, 122, 37, 0.4) 60%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Left leaf - attached at bottom right corner */
+.leaf-l {
+  left: 50%;
+  transform-origin: bottom right;
+  transform: translateX(-100%) rotate(-35deg);
+  border-radius: 50% 50% 5% 50%;
+}
+
+/* Right leaf - attached at bottom left corner */
+.leaf-r {
+  left: 50%;
+  transform-origin: bottom left;
+  transform: rotate(35deg);
+  border-radius: 50% 50% 50% 5%;
+}
+
+.leaf-l::before {
+  left: auto;
+  right: 5%;
+  transform: none;
+}
+
+.leaf-r::before {
+  left: 5%;
+}
+
+/* Ground and Grass */
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8%;
+  background: linear-gradient(to top,
+    #1a1510 0%,
+    #252015 40%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* Responsive text */
+@media (min-width: 380px) {
+  .message-1 { font-size: 2.5rem; }
+  .message-2 { font-size: 2.2rem; }
+  .message-3 { font-size: 1.4rem; }
+  .yes-btn { font-size: 1.6rem; padding: 14px 40px; }
+}
+
+@media (min-width: 480px) {
+  .message-container { top: 5%; }
+  .message-1 { font-size: 3rem; }
+  .message-2 { font-size: 2.6rem; }
+  .message-3 { font-size: 1.5rem; }
+  .yes-btn { font-size: 1.8rem; padding: 16px 45px; }
+}
+
+@media (min-width: 768px) {
+  .message-container { top: 6%; }
+  .message-1 { font-size: 3.5rem; }
+  .message-2 { font-size: 3rem; }
+  .message-3 { font-size: 1.7rem; }
+  .yes-btn { font-size: 2rem; padding: 18px 50px; }
+}
+
+@media (max-height: 600px) {
+  .message-container { top: 2%; }
+  .message-1 { font-size: 2.2rem; margin-bottom: 4px; }
+  .message-2 { font-size: 1.6rem; margin-bottom: 4px; }
+  .message-3 { font-size: 1.1rem; }
+  .yes-btn { font-size: 1.3rem; padding: 10px 30px; }
+}
+
+.grass-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grass-blade {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to top,
+    var(--stem-dark) 0%,
+    var(--stem-main) 40%,
+    var(--stem-light) 100%
+  );
+  border-radius: 50% 50% 0 0;
+  transform-origin: bottom center;
+}
+
+.grass-blade::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 15%;
+  background: inherit;
+  border-radius: 50%;
+}
+
+/* Long decorative grass curves */
+.long-grass {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to top,
+    transparent 0%,
+    #2d7a2d 30%,
+    #4a9a4a 100%
+  );
+  border-radius: 50% 50% 0 0;
+  transform-origin: bottom center;
+}
+
+.long-grass-leaf {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 60px;
+  border-left: 3px solid #3d8b3d;
+  border-top-left-radius: 100%;
+  transform-origin: bottom center;
+}
+
+/* Fireflies/light particles */
+.firefly {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fffb00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 3px rgba(255, 251, 0, 0.4);
+  opacity: 0;
+}
+
+/* Glowing Petal Flowers (like original but yellow) */
+.glow-flower {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.glow-flower-stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg,
+    #3D5C1A 0%,
+    #4A7023 30%,
+    #6B8E23 50%,
+    #4A7023 70%,
+    #3D5C1A 100%
+  );
+  border-radius: 3px;
+  transform-origin: bottom center;
+}
+
+.glow-flower-head {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center center;
+}
+
+.glow-petal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 50% 50% 40% 40%;
+  background: linear-gradient(to bottom,
+    #FFFDE7 0%,
+    #FFF59D 30%,
+    #FFE082 60%,
+    #FFD54F 100%
+  );
+  box-shadow: 
+    0 0 15px rgba(255, 245, 157, 0.6),
+    0 0 30px rgba(255, 224, 130, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.5);
+  filter: drop-shadow(0 0 8px rgba(255, 241, 118, 0.5));
+}
+
+.glow-flower-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    #FFFF00 0%,
+    #FFC107 50%,
+    #FF9800 100%
+  );
+  box-shadow: 
+    0 0 15px rgba(255, 193, 7, 0.8),
+    0 0 25px rgba(255, 152, 0, 0.5),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.4);
+  z-index: 10;
+}
+
+/* Glow flower stem leaves - curved like original */
+.glow-stem-leaf {
+  position: absolute;
+  background: linear-gradient(135deg,
+    #7CB342 0%,
+    #5D9930 40%,
+    #4A7A25 100%
+  );
+  border-radius: 50% 0 50% 50%;
+  box-shadow:
+    0 0 10px rgba(124, 179, 66, 0.4),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15);
+  transform-origin: bottom center;
+}
+
+.glow-stem-leaf-l {
+  left: 50%;
+  transform: translateX(-100%) rotate(-45deg);
+}
+
+.glow-stem-leaf-r {
+  left: 50%;
+  transform: rotate(45deg);
+}
+
+/* Front decorative plant (curved leaves) */
+.front-plant {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.curved-leaf {
+  position: absolute;
+  bottom: 0;
+  width: 25px;
+  height: 70px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(135deg,
+    #7CB342 0%,
+    #5D9930 40%,
+    #4A7A25 100%
+  );
+  box-shadow:
+    0 0 12px rgba(124, 179, 66, 0.3),
+    inset 3px 3px 8px rgba(255, 255, 255, 0.2),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15);
+  transform-origin: bottom center;
+}
+
+.curved-leaf::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 70%;
+  background: linear-gradient(to bottom,
+    rgba(74, 122, 37, 0.6) 0%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+/* Tulip flower */
+.tulip {
+  position: absolute;
+  bottom: 0;
+}
+
+.tulip-stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: linear-gradient(90deg, 
+    #3D5C1A 0%, 
+    #5D9930 50%, 
+    #3D5C1A 100%
+  );
+  border-radius: 2px;
+  transform-origin: bottom center;
+}
+
+.tulip-head {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+}
+
+.tulip-petal {
+  position: absolute;
+  border-radius: 50% 50% 30% 30%;
+  transform-origin: bottom center;
+}
+
+.tulip-red .tulip-petal {
+  background: linear-gradient(to top,
+    #8B0000 0%,
+    #DC143C 40%,
+    #FF6B6B 90%
+  );
+  box-shadow: inset 2px 2px 8px rgba(255,150,150,0.4),
+              inset -2px -2px 6px rgba(0,0,0,0.3);
+}
+
+.tulip-pink .tulip-petal {
+  background: linear-gradient(to top,
+    #C71585 0%,
+    #FF69B4 40%,
+    #FFB6C1 90%
+  );
+  box-shadow: inset 2px 2px 8px rgba(255,200,220,0.4),
+              inset -2px -2px 6px rgba(0,0,0,0.2);
+}
+
+.tulip-purple .tulip-petal {
+  background: linear-gradient(to top,
+    #4B0082 0%,
+    #8A2BE2 40%,
+    #DA70D6 90%
+  );
+  box-shadow: inset 2px 2px 8px rgba(220,180,255,0.4),
+              inset -2px -2px 6px rgba(0,0,0,0.3);
+}
+
+.tulip-leaf {
+  position: absolute;
+  background: linear-gradient(135deg,
+    #7CB342 0%,
+    #5D9930 50%,
+    #4A7A25 100%
+  );
+  border-radius: 5% 95% 5% 95%;
+  transform-origin: bottom center;
+}
+
+/* Rose flower */
+.rose {
+  position: absolute;
+  bottom: 0;
+}
+
+.rose-stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: linear-gradient(90deg, 
+    #2D5016 0%, 
+    #4A7023 50%, 
+    #2D5016 100%
+  );
+  border-radius: 2px;
+  transform-origin: bottom center;
+}
+
+/* Thorns on rose stem */
+.rose-thorn {
+  position: absolute;
+  width: 8px;
+  height: 4px;
+  background: #3D5C1A;
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+.rose-head {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  transform-origin: center center;
+}
+
+.rose-petal {
+  position: absolute;
+  border-radius: 50% 50% 45% 45%;
+  transform-origin: 50% 100%;
+}
+
+.rose-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.rose-red .rose-petal {
+  background: linear-gradient(to bottom,
+    #FF1744 0%,
+    #D50000 50%,
+    #8B0000 100%
+  );
+  box-shadow: inset 1px 1px 4px rgba(255,100,100,0.4),
+              inset -1px -1px 3px rgba(0,0,0,0.3);
+}
+
+.rose-red .rose-center {
+  background: radial-gradient(circle,
+    #8B0000 0%,
+    #5C0000 100%
+  );
+}
+
+.rose-pink .rose-petal {
+  background: linear-gradient(to bottom,
+    #FF69B4 0%,
+    #FF1493 50%,
+    #C71585 100%
+  );
+  box-shadow: inset 1px 1px 4px rgba(255,182,193,0.5),
+              inset -1px -1px 3px rgba(0,0,0,0.2);
+}
+
+.rose-pink .rose-center {
+  background: radial-gradient(circle,
+    #FF1493 0%,
+    #C71585 100%
+  );
+}
+
+.rose-white .rose-petal {
+  background: linear-gradient(to bottom,
+    #FFFFFF 0%,
+    #F5F5F5 50%,
+    #E8E8E8 100%
+  );
+  box-shadow: inset 1px 1px 4px rgba(255,255,255,0.8),
+              inset -1px -1px 3px rgba(0,0,0,0.1);
+}
+
+.rose-white .rose-center {
+  background: radial-gradient(circle,
+    #FFFDE7 0%,
+    #FFF9C4 100%
+  );
+}
+
+.rose-leaf {
+  position: absolute;
+  background: linear-gradient(135deg,
+    #6B8E23 0%,
+    #4A7023 50%,
+    #3D5C1A 100%
+  );
+  border-radius: 50% 0% 50% 0%;
+  transform-origin: bottom center;
+}
+
+/* Butterfly */
+.butterfly {
+  position: absolute;
+  pointer-events: none;
+  z-index: 200;
+}
+
+.butterfly-body {
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(to bottom, #333 0%, #1a1a1a 100%);
+  border-radius: 50%;
+  position: relative;
+}
+
+.butterfly-wing {
+  position: absolute;
+  border-radius: 50% 50% 50% 0;
+  animation: wingFlap 0.15s ease-in-out infinite alternate;
+}
+
+.butterfly-wing.left {
+  right: 100%;
+  transform-origin: right center;
+}
+
+.butterfly-wing.right {
+  left: 100%;
+  transform-origin: left center;
+  animation-delay: 0.075s;
+}
+
+@keyframes wingFlap {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(70deg); }
+}
+
+/* Star particles for rose scene */
+.star-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Rose scene specific styles */
+.rose-scene .ground {
+  background: linear-gradient(to top,
+    #0d0508 0%,
+    #1a0a14 40%,
+    transparent 100%
+  );
+}
+
+/* Petals falling animation */
+.falling-petal {
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+  border-radius: 50% 0 50% 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 150;
+}
+
+

@@ -1,4 +1,4 @@
-# 🌻 Flowers for You Bebi
+# 🌻 Flowers for Her
 
 A romantic animated flower garden made with love. This project features beautiful sunflowers, tulips, roses, and glowing flowers that rise gracefully from the bottom of the screen.
 
@@ -31,6 +31,3 @@ Simply open `index.html` in a browser, or host it on any static hosting service 
 - Netlify
 - Vercel
 
-## 💝 Made With Love
-
-Created as a Valentine's Day gift.
